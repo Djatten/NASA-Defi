@@ -1,0 +1,514 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial;
+  background: #f3f4f6;
+  color: #111;
+  line-height: 1.35;
+}
+
+/* Header */
+header {
+  background: #fff;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.badge {
+  width: 100px;
+  height: 56px;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: #111;
+  box-shadow: 0 6px 14px rgba(16, 24, 40, 0.06);
+  transition: all 0.28s 0.2s;
+}
+.badge:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.25);
+}
+.badge:hover {
+  transform: translateY(-6px);
+  cursor: pointer;
+}
+
+.badge:active {
+  transform: translateY(-2px) scale(0.95);
+  transition: all 0.1s ease;
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(16, 24, 40, 0.08);
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(360deg);
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.logo:active {
+  transform: scale(0.95);
+  transition: all 0.1s ease;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 10px 80px;
+}
+.hero {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Card */
+.card {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #fff);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.card:focus-within,
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card-media {
+  width: 100%;
+  height: 220px;
+  background: #e6e7e9;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Overlay that appears on hover / focus */
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px 16px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.15) 45%,
+    rgba(0, 0, 0, 0)
+  );
+  color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.36s cubic-bezier(0.2, 0.9, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card:hover .overlay,
+.card:focus-within .overlay,
+.card.show-info .overlay {
+  transform: translateY(0);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.desc {
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+.btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+/* Accessibility: show overlay on keyboard focus */
+.card a:focus {
+  outline: 2px dashed rgba(255, 255, 255, 0.45);
+  outline-offset: 3px;
+}
+
+/* Small devices */
+
+:root {
+  --bg: #f3f4f6;
+  --card-bg: #fff;
+  --text: #111;
+  --glass: rgba(16, 24, 40, 0.06);
+  --accent: 59 130 246; /* pour outline rgba-compatible via rgb + alpha */
+  --max-width: 1200px;
+  --gap: 20px;
+}
+
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px; /* base */
+}
+
+/* Fluid typography for headings */
+h1 {
+  font-size: clamp(1.25rem, 2.8vw, 2.25rem);
+  line-height: 1.05;
+}
+.title {
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+}
+.desc {
+  font-size: clamp(0.78rem, 1.6vw, 0.82rem);
+}
+
+/* Header */
+header {
+  background: var(--card-bg);
+  padding: clamp(10px, 2.2vw, 18px);
+  box-shadow: 0 6px 18px var(--glass);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* left block (badge + optional title) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* badge & logo scale fluidly */
+.badge {
+  width: clamp(64px, 8.2vw, 110px);
+  height: clamp(40px, 8.2vw, 56px);
+  border-radius: 12px;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: clamp(18px, 2.6vw, 28px);
+  color: var(--text);
+  box-shadow: 0 6px 14px var(--glass);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.badge:focus {
+  outline: 3px solid rgba(var(--accent), 0.18);
+}
+.badge:hover {
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
+/* round logo */
+.logo {
+  width: clamp(48px, 6.2vw, 72px);
+  height: clamp(48px, 6.2vw, 72px);
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px var(--glass);
+  background: var(--card-bg);
+  transition: transform 0.9s ease;
+}
+.logo:hover {
+  transform: rotate(360deg);
+}
+.logo:active {
+  transform: scale(0.95);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* main layout */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 12px 80px;
+}
+
+/* hero */
+.hero {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap);
+  width: 94%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 8px;
+}
+
+/* card */
+.card {
+  position: relative;
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg));
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px var(--glass);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+}
+.card:focus-within,
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* media: use aspect-ratio where possible, fallback height clamp */
+.card-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: clamp(120px, 22vw, 220px);
+  background: #e6e7e9;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* overlay (hover / focus) */
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px 16px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.15) 45%,
+    rgba(0, 0, 0, 0)
+  );
+  color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.36s cubic-bezier(0.2, 0.9, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card:hover .overlay,
+.card:focus-within .overlay,
+.card.show-info .overlay {
+  transform: translateY(0);
+}
+
+/* card content spacing */
+.card-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+/* actions */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+.btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+/* Accessibility */
+.card a:focus {
+  outline: 2px dashed rgba(255, 255, 255, 0.45);
+  outline-offset: 3px;
+}
+
+/* Small devices / touch: adjust paddings, grid and overlay behaviour */
+@media (max-width: 640px) {
+  header {
+    padding: 12px 14px;
+  }
+  .grid {
+    gap: 12px;
+  }
+  .card {
+    min-height: 140px;
+  }
+  .card-media {
+    min-height: 120px;
+    aspect-ratio: 4 / 3;
+  }
+  .overlay {
+    padding: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(1.1rem, 4.2vw, 1.5rem);
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 641px) and (max-width: 980px) {
+  header {
+    padding: 14px 18px;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  .card-media {
+    min-height: 160px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 981px) {
+  main {
+    padding-top: 36px;
+  }
+  .grid {
+    width: 90%;
+  }
+}
+
+/* Extra polish - reduce transform on very small screens to avoid jank */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+  }
+  .badge:hover {
+    transform: none;
+  }
+  .logo:hover {
+    transform: none;
+  }
+}
+
+/* Utility: visually-hidden for accessibility */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Footer spacing example (if needed) */
+.site-footer {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 40px auto 0;
+  padding: 8px 16px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}

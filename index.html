@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Défi de la NASA — Exemples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header role="banner" aria-label="En-tête du site">
+      <div class="badge" tabindex="0" aria-hidden="true">N</div>
+      <div class="badge" tabindex="0" aria-hidden="true">A</div>
+      <div class="badge" tabindex="0" aria-hidden="true">S</div>
+      <div class="badge" tabindex="0" aria-hidden="true">A</div>
+      <div class="logo" aria-hidden="true">
+        <img src="img/logo.png" alt="Logo NASA ou projet" />
+      </div>
+      <div class="badge" tabindex="0" aria-hidden="true">N</div>
+      <div class="badge" tabindex="0" aria-hidden="true">A</div>
+      <div class="badge" tabindex="0" aria-hidden="true">s</div>
+      <div class="badge" tabindex="0" aria-hidden="true">A</div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="main-title">
+        <h1 id="main-title">Défi de la NASA — Ma selection</h1>
+      </section>
+
+      <section class="grid" aria-label="Liste des cartes de défis">
+        <!-- Card 1 -->
+        <article class="card" tabindex="0">
+          <div class="card-media">
+            <!-- Renommez vos images pour éviter les espaces dans les noms de fichiers: ex. leo.jpg -->
+            <img
+              src="img/Commercialisation de l'orbite terrestre basse (LEO).jpg"
+              alt="Commercialisation de l'orbite terrestre basse"
+            />
+          </div>
+          <div class="overlay" aria-hidden="false">
+            <div class="title">
+              Commercialisation de l'orbite terrestre basse (LEO)
+            </div>
+            <div class="desc">
+              Explorer les opportunités commerciales et les modèles économiques
+              pour l'utilisation de l'orbite basse terrestre.
+            </div>
+            <div class="card-actions">
+              <a
+                href="https://www.spaceappschallenge.org/2025/challenges/commercializing-low-earth-orbit-leo/"
+                class="btn"
+                aria-label="En savoir plus sur LEO"
+                >En savoir plus</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" tabindex="0">
+          <div class="card-media">
+            <img
+              src="img/Chemins de données vers des villes et des établissements humains sains.jpg"
+              alt="Titre thème 3"
+            />
+          </div>
+          <div class="overlay">
+            <div class="title">
+              Chemins de données vers des villes et des établissements humains
+              sains
+            </div>
+            <div class="desc">
+              Le changement climatique complique la préservation du bien-être
+              sociétal et environnemental dans les villes. Les urbanistes
+              doivent surveiller les ressources et infrastructures pour
+              maintenir la qualité de vie.
+            </div>
+            <div class="card-actions">
+              <a
+                class="btn"
+                href="https://www.spaceappschallenge.org/2025/challenges/data-pathways-to-healthy-cities-and-human-settlements/"
+                >En savoir plus</a
+              >
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+        </article>
+        <article class="card" tabindex="0">
+          <div class="card-media">
+            <img src="img/Créez votre propre défi.jpg" alt="Titre thème 2" />
+          </div>
+          <div class="overlay">
+            <div class="title">Créez votre propre défi</div>
+            <div class="desc">
+              Si vous avez une idée qui ne correspond à nos défis ou si vous
+              êtes débutant, vous pouvez créer votre propre défi, qu'il s'agisse
+              d'une application,
+            </div>
+            <div class="card-actions">
+              <a
+                class="btn"
+                href="https://www.spaceappschallenge.org/2025/challenges/create-your-own-challenge/"
+                >En savoir plus</a
+              >
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      /* Touch / click support for cards (put in a <script> or app.js) */
+      (function () {
+        // feature-detect hover support: if device supports hover, no need to add click toggles
+        const hoverSupported =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        if (hoverSupported) return;
+
+        // delegate: attach one listener to document for performance
+        document.addEventListener(
+          "click",
+          (e) => {
+            const card = e.target.closest(".card");
+            // if clicked inside a card
+            if (card) {
+              // if clicked a link or button inside card, allow default behaviour
+              if (e.target.closest("a, button")) return;
+              // toggle info on the clicked card
+              card.classList.toggle("show-info");
+              // remove show-info from other cards
+              document.querySelectorAll(".card.show-info").forEach((c) => {
+                if (c !== card) c.classList.remove("show-info");
+              });
+              return;
+            }
+
+            // click outside any card -> close all
+            document
+              .querySelectorAll(".card.show-info")
+              .forEach((c) => c.classList.remove("show-info"));
+          },
+          { passive: true }
+        );
+
+        // close on Escape
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            document
+              .querySelectorAll(".card.show-info")
+              .forEach((c) => c.classList.remove("show-info"));
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
