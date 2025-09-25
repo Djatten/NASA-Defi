@@ -459,6 +459,10 @@ main {
 
 /* Medium devices (tablets) */
 @media (min-width: 641px) and (max-width: 980px) {
+  .badge {
+    display: none;
+  }
+                                      
   header {
     padding: 14px 18px;
   }
