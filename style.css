@@ -436,6 +436,11 @@ main {
 
 /* Small devices / touch: adjust paddings, grid and overlay behaviour */
 @media (max-width: 640px) {
+
+  .badge {
+    display: none;
+  }
+  
   header {
     padding: 12px 14px;
   }
